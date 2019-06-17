@@ -45,12 +45,12 @@ function command_spawn(command, args)
     else
       game.print{"invalid-parameter"}
     end
-  elseif subcommand == "get" then
+  elseif subcommand == "get" or subcommand == "show" then
     pos = player.force.get_spawn_position(1)
-    game.print{"setspawn.spawn-point-get", player.force.name, pos.x, pos.y}
-  elseif subcommand == "show" then
-    pos = player.force.get_spawn_position(1)
-    game.print{"setspawn.spawn-point-show", player.force.name, pos.x, pos.y}
+    game.print{
+      "setspawn.spawn-point-"..subcommand,
+      player.force.name, pos.x, pos.y
+    }
   elseif subcommand == "reset" then
     pos = global.original_spawn[player.force.name]
     player.force.set_spawn_position(pos, 1)
