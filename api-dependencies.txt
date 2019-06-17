@@ -1,5 +1,7 @@
 Functions:
   LuaForce.(set|get)_spawn_position
+  LuaForce.add_chart_tag
+  LuaCustomChartTag.destroy()
 
 Events:
   on_force_created

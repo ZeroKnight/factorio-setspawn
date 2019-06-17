@@ -32,6 +32,12 @@ Prints the current spawn point of the invoking user's force to the console.
 Like `get`, but uses a `[gps]` tag, which shows the spawn point as a waypoint
 on the map.
 
+### map
+
+`map`
+
+Toggles a map tag (waypoint) showing the location of the spawn point.
+
 ### reset
 
 `reset`

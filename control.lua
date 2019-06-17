@@ -11,6 +11,7 @@ require('commands')
 
 function do_init()
   global.original_spawn = {}
+  global.map_tag = {}
   update_original_spawns()
   register_commands()
 end
