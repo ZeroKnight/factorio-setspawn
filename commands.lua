@@ -87,7 +87,7 @@ end
 function update_map_tag(player, pos)
   local tag = global.map_tag[player.force.name]
   if tag then
-    global.map_tag[player.force.name].destroy()
+    tag.destroy()
     set_map_tag(player, pos)
   end
 end
