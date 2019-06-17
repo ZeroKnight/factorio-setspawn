@@ -39,12 +39,12 @@ function command_spawn(command, args)
     if pos.x and pos.y then
       player.force.set_spawn_position(pos, 1)
       update_map_tag(player, pos)
-      game.print{
+      player.force.print{
         (gps and "setspawn.spawn-point-set-gps" or "setspawn.spawn-point-set"),
         player.force.name, pos.x, pos.y
       }
     else
-      game.print{"invalid-parameter"}
+      player.print{"invalid-parameter"}
     end
   elseif subcommand == "map" then
     -- Toggles map tag for the current spawn point
@@ -56,7 +56,7 @@ function command_spawn(command, args)
     end
   elseif subcommand == "get" or subcommand == "show" then
     pos = player.force.get_spawn_position(1)
-    game.print{
+    player.print{
       "setspawn.spawn-point-"..subcommand,
       player.force.name, pos.x, pos.y
     }
@@ -64,7 +64,9 @@ function command_spawn(command, args)
     pos = global.original_spawn[player.force.name]
     player.force.set_spawn_position(pos, 1)
     update_map_tag(player, pos)
-    game.print{"setspawn.spawn-point-reset", player.force.name, pos.x, pos.y}
+    player.force.print{
+      "setspawn.spawn-point-reset", player.force.name, pos.x, pos.y
+    }
   end
 end
 
