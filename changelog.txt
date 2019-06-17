@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 2019.06.17
+  Minor Features:
+    - Added 'map' subcommand to 'spawn'. Toggles display of a map tag for the current spawn point
+  Bugfixes:
+    - Print messages are now properly scoped and don't print globally in all cases
+---------------------------------------------------------------------------------------------------
 Version: 0.1.0
 Date: 2019.06.10
   Info:
