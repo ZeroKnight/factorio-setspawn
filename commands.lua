@@ -48,7 +48,7 @@ function command_spawn(command, args)
     end
   elseif subcommand == "map" then
     -- Toggles map tag for the current spawn point
-    if global.map_tag[player.force.name] == nil then
+    if not global.map_tag[player.force.name] then
       set_map_tag(player, player.force.get_spawn_position(1))
       player.force.print{
         "setspawn.spawn-point-map-enabled", player.force.name
