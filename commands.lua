@@ -50,9 +50,15 @@ function command_spawn(command, args)
     -- Toggles map tag for the current spawn point
     if global.map_tag[player.force.name] == nil then
       set_map_tag(player, player.force.get_spawn_position(1))
+      player.force.print{
+        "setspawn.spawn-point-map-enabled", player.force.name
+      }
     else
       global.map_tag[player.force.name].destroy()
       global.map_tag[player.force.name] = nil
+      player.force.print{
+        "setspawn.spawn-point-map-disabled", player.force.name
+      }
     end
   elseif subcommand == "get" or subcommand == "show" then
     pos = player.force.get_spawn_position(1)
