@@ -36,7 +36,8 @@ on the map.
 
 `map`
 
-Toggles a map tag (waypoint) showing the location of the spawn point.
+Toggles a map tag showing the location of the spawn point, the same kind that
+can be added by right-clicking on the map screen.
 
 ### reset
 
