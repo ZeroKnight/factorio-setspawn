@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+Date: 2019.09.28
+  Bugfixes:
+    - Fix crash when attempting to run the 'spawn' command without any arguments
+  Other:
+    - Display help when attempting to run the 'spawn' command with an invalid or missing argument
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2019.06.17
   Minor Features:
