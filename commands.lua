@@ -75,6 +75,9 @@ function command_spawn(command, args)
     player.force.print{
       "setspawn.spawn-point-reset", player.force.name, pos.x, pos.y
     }
+  else
+    player.print('Invalid subcommand')
+    player.print({'setspawn.help'})
   end
 end
 
