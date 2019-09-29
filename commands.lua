@@ -13,8 +13,10 @@ function dispatch_command(command)
   -- Splits command.parameter into an array and dispatches to the appropriate
   -- command handler
   local args = {}
-  for arg in string.gmatch(command.parameter, '(%S+)') do
-    table.insert(args, arg)
+  if command.parameter then
+    for arg in string.gmatch(command.parameter, '(%S+)') do
+      table.insert(args, arg)
+    end
   end
   _G['command_' .. command.name](command, args)
 end
