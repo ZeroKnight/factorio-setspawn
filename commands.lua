@@ -39,7 +39,7 @@ function command_spawn(command, args)
     end
     -- Defaults to current position if no arguments given
     if pos.x and pos.y then
-      player.force.set_spawn_position(pos, 1)
+      player.force.set_spawn_position(pos, player.surface)
       update_map_tag(player, pos)
       player.force.print{
         (gps and "setspawn.spawn-point-set-gps" or "setspawn.spawn-point-set"),
@@ -48,10 +48,11 @@ function command_spawn(command, args)
     else
       player.print{"invalid-parameter"}
     end
+
   elseif subcommand == "map" then
     -- Toggles map tag for the current spawn point
     if not global.map_tag[player.force.name] then
-      set_map_tag(player, player.force.get_spawn_position(1))
+      set_map_tag(player, player.force.get_spawn_position(player.surface))
       player.force.print{
         "setspawn.spawn-point-map-enabled", player.force.name
       }
@@ -62,19 +63,22 @@ function command_spawn(command, args)
         "setspawn.spawn-point-map-disabled", player.force.name
       }
     end
+
   elseif subcommand == "get" or subcommand == "show" then
-    pos = player.force.get_spawn_position(1)
+    pos = player.force.get_spawn_position(player.surface)
     player.print{
       "setspawn.spawn-point-"..subcommand,
       player.force.name, pos.x, pos.y
     }
+
   elseif subcommand == "reset" then
     pos = global.original_spawn[player.force.name]
-    player.force.set_spawn_position(pos, 1)
+    player.force.set_spawn_position(pos, player.surface)
     update_map_tag(player, pos)
     player.force.print{
       "setspawn.spawn-point-reset", player.force.name, pos.x, pos.y
     }
+
   else
     player.print('Invalid subcommand')
     player.print({'setspawn.help'})
@@ -82,7 +86,8 @@ function command_spawn(command, args)
 end
 
 function set_map_tag(player, pos)
-  global.map_tag[player.force.name] = player.force.add_chart_tag(1, {
+  global.map_tag[player.force.name] = player.force.add_chart_tag(
+    player.surface, {
     position = pos,
     text = "Spawn Point",
     last_user = player
