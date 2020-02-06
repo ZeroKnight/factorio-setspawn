@@ -24,8 +24,9 @@ function register_commands()
   commands.add_command("spawn", {"setspawn.help"}, dispatch_command)
 end
 
-function update_original_spawns(new_force)
+function update_original_spawns(event)
   local os = global.original_spawn
+  local new_force = event.force
   if new_force then
     os[new_force] = new_force.get_spawn_position(1)
   else
