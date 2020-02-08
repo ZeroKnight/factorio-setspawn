@@ -26,7 +26,7 @@ end
 
 function update_original_spawns(event)
   local os = global.original_spawn
-  local new_force = event.force
+  local new_force = event and event.force or nil
   if new_force then
     os[new_force] = new_force.get_spawn_position(1)
   else
